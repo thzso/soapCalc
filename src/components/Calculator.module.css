@@ -7,13 +7,6 @@
   margin: 0;
 }
 
-/* .weightOfOils{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-} */
-
 .resultRow {
   display: flex;
   align-items: center;
@@ -31,8 +24,6 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-
-  /* font-weight: bold; */
 }
 
 .result span {
@@ -56,12 +47,6 @@
   flex-direction: row;
 }
 
-/* 
-.inputsWithPercent {
-  display: flex;
-  align-items: center;
-} */
-
 @media screen and (max-width: 500px) {
   .calculatorContanier {
     margin: 1rem;
@@ -74,7 +59,7 @@
     min-width: fit-content;
   }
 
-  .labeledInput{
+  .labeledInput {
     flex-direction: column;
     flex: 0;
   }

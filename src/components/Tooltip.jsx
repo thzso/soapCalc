@@ -1,28 +1,33 @@
+import { useEffect, useState } from "react";
+import styles from "./tooltip.module.css";
+const Tooltip = ({ sumPercent }) => {
+  const [isVisible, setIsvisible] = useState(true);
+  const is100 = sumPercent === 100;
 
-
-import { useEffect, useState } from "react"
-import styles from "./tooltip.module.css"
-const Tooltip=({sumPercent})=>{
-
-  const [isVisible, setIsvisible] = useState(true)
-  const is100 = sumPercent === 100
-
-  useEffect(()=>{
+  useEffect(() => {
     const timer = setTimeout(() => {
-      setIsvisible(false)
+      setIsvisible(false);
     }, 1500);
     return () => clearTimeout(timer);
-  }, [])
+  }, []);
 
- 
-
-console.log(sumPercent)
+  console.log(sumPercent);
 
   return (
     <>
-     {isVisible && <div className={ is100 ? `${styles.green} ${styles.tooltip}`: `${styles.red } ${styles.tooltip}`} >{is100 ? "reached max" : "exceeded max"}</div>}
+      {isVisible && (
+        <div
+          className={
+            is100
+              ? `${styles.green} ${styles.tooltip}`
+              : `${styles.red} ${styles.tooltip}`
+          }
+        >
+          {is100 ? "reached max" : "exceeded max"}
+        </div>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Tooltip
+export default Tooltip;

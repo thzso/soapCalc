@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styles from "./DataInputs.module.css";
 import input from "./Input.module.css";
 import InputContainer from "./InputContainer";
 import Tooltip from "./Tooltip";
 
 const DataInputs = ({
-  // children,
   id,
   oilsData,
   index,
@@ -17,23 +16,17 @@ const DataInputs = ({
   sumPercent,
   setSumpercent,
   setNaOhQuantity,
-  setLiquidQuantity,
+  setOptions,
 }) => {
   const [selected, setSelected] = useState(oilsData.oil);
   const [percentValue, setPercentValue] = useState(oilsData.percent);
   const [weightValue, setWeightValue] = useState(oilsData.weight);
-  // const [isFocused, setIsFocused] = useState(false);
-  const [isWeightFocused, setIsWeightFocused] = useState(false);
-  const [isOptionFocused, setIsOptionFocused] = useState(false);
-
-  const ref = useRef();
 
   const sumWeight = inputsList.reduce(
     (acc, current) => acc + Number(current.weight),
     0
   );
 
-  console.log("inputsList datainputsban", inputsList);
   useEffect(() => {
     if (totalWeight !== "" && percentValue !== "") {
       const newWeight = totalWeight * (percentValue / 100);
@@ -45,32 +38,31 @@ const DataInputs = ({
         })
       );
     }
-
-    // const newList= inputsList.map(obj => {
-    //   obj.percent = "1"
-    //   return obj
-    //     })
-    //     console.log(inputsList, newList)
-
-    //     setInputsList(newList)
+    if (totalWeight === "") {
+      setPercentValue("");
+      setWeightValue("");
+      setInputsList((prev) =>
+        prev.map((obj) => {
+          obj.weight = "";
+          obj.percent = "";
+          return obj;
+        })
+      );
+    }
   }, [totalWeight]);
+
+  const addPercent = (list) => {
+    return list.reduce((acc, current) => acc + Number(current.percent), 0);
+  };
 
   useEffect(() => {
     const isAllInpuFilled = inputsList.every((obj) =>
       Object.values(obj).every((x) => x !== "")
     );
-    const sum = inputsList.reduce(
-      (acc, current) => acc + Number(current.percent),
-      0
-    );
+    const sum = addPercent(inputsList);
     setSumpercent(sum);
     setDisabled(sum >= 100 || !isAllInpuFilled ? true : false);
   }, [percentValue]);
-
-  // useEffect(() => {
-  //   setNaOhQuantity("");
-  //   setLiquidQuantity("");
-  // }, [selected, percentValue, weightValue, inputsList]);
 
   const updateInputsList = (name, value, otherKey, otherValue) => {
     const modifiedObject = inputsList.find((obj) => obj.id === id);
@@ -82,32 +74,36 @@ const DataInputs = ({
   };
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
+    // const prevSelected = selected
     setSelected(value);
+    console.log("Selected", selected);
     updateInputsList(name, value);
+    setOptions(
+      () => {
+        const newArr = options
+          .map((obj) => (obj.text === value ? { ...obj, disabled: true } : obj))
+          .map((obj) =>
+            obj.text === selected ? { ...obj, disabled: false } : obj
+          );
+        return newArr;
+      }
+
+      // const newOptions =.map()
+    );
   };
+  console.log(options);
   const handlePercentChange = (num, name) => {
-    // const { name, value } = e.target;
-
-    // const num =
-    //   value === ""
-    //     ? ""
-    //     : Math.max(0, Math.min(100, Number(value.replace(/\D/g, ""))));
-
-    const weightUpdate = num === "" ? "" : totalWeight * (num / 100);
+    const weightUpdate =
+      num === "" ? "" : (totalWeight * (num / 100)).toFixed(2);
     const key = "weight";
     setPercentValue(num);
     setWeightValue(weightUpdate);
     updateInputsList(name, num, key, weightUpdate);
   };
   const handleWeightChange = (num, name) => {
-    // const { name, value } = e.target;
-    // const num =
-    //   value === ""
-    //     ? ""
-    //     : Math.max(1, Math.min(totalWeight, Number(value.replace(/\D/g, ""))));
-
     setWeightValue(num);
-    const percentUpdate = num === "" ? "" : (num / totalWeight) * 100;
+    const percentUpdate =
+      num === "" ? "" : ((num / totalWeight) * 100).toFixed(2);
     const key = "percent";
     setPercentValue(percentUpdate);
     updateInputsList(name, num, key, percentUpdate);
@@ -118,6 +114,9 @@ const DataInputs = ({
     const index = inputsList.findIndex((obj) => obj.id === id);
     list.splice(index, 1);
     setInputsList(list);
+    const sum = addPercent(list);
+
+    setSumpercent(sum);
     setDisabled(false);
   };
 
@@ -126,8 +125,7 @@ const DataInputs = ({
       className={`${styles.inputsContainer} ${
         index === 0 && styles.rowWithoutX
       }`}
-      ref={ref}
-      id={Math.random() * 100}
+
     >
       <div className={input.customSelect}>
         <select
@@ -141,17 +139,8 @@ const DataInputs = ({
           disabled={totalWeight ? false : true}
           onChange={handleSelectChange}
         >
-          {options.map((opt) => (
-            <option
-              // className={optionFocus? input.optionFocused : {}}
-              key={opt.text}
-              value={opt.value}
-              disabled={
-                opt.disabled
-                  ? opt.disabled
-                  : inputsList.some((obj) => obj.oil === opt.text)
-              }
-            >
+          {options.map((opt, i) => (
+            <option key={i} value={opt.value} disabled={opt.disabled}>
               {opt.text}
             </option>
           ))}
@@ -167,30 +156,11 @@ const DataInputs = ({
           min={0}
           placeholder={totalWeight ? `max ${100 - sumPercent}` : "---"}
           disabled={selected && totalWeight ? false : true}
-          inputTag="g"
-          {...{setNaOhQuantity}}
+          inputTag="%"
+          {...{ setNaOhQuantity }}
         >
           {sumPercent >= 100 && <Tooltip {...{ sumPercent }} />}
         </InputContainer>
-
-        {/* <div className={input.inputContainer}>
-          <input
-            className={input.input}
-            ref={percentInputRef}
-            type="text"
-            name="percent"
-            id=""
-            value={percentValue}
-            disabled={selected && totalWeight ? false : true}
-            placeholder={totalWeight ? `max ${100 - sumPercent}` : "---"}
-            onInput={handlePercentChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            autoComplete="off"
-          />
-          {isFocused && children}
-          <span className={input.inputTag}>%</span>
-        </div> */}
 
         <InputContainer
           name="weight"
@@ -201,29 +171,10 @@ const DataInputs = ({
           placeholder={totalWeight ? `max ${totalWeight - sumWeight}` : "---"}
           disabled={selected && totalWeight ? false : true}
           inputTag="g"
-          {...{setNaOhQuantity}}
+          {...{ setNaOhQuantity }}
         >
           {sumPercent >= 100 && <Tooltip {...{ sumPercent }} />}
         </InputContainer>
-
-        {/* <div className={input.inputContainer}>
-          <input
-            className={input.input}
-            ref={weightInputRef}
-            type="text"
-            name="weight"
-            id=""
-            value={weightValue}
-            disabled={selected && totalWeight ? false : true}
-            placeholder={totalWeight ? `max ${totalWeight - sumWeight}` : "---"}
-            onInput={handleWeightChange}
-            onFocus={() => setIsWeightFocused(true)}
-            onBlur={() => setIsWeightFocused(false)}
-            autoComplete="off"
-          />
-          {isWeightFocused && children}
-          <span className={input.inputTag}>g</span>
-        </div> */}
 
         <div className={styles.delete}>
           {index !== 0 && (
@@ -234,8 +185,6 @@ const DataInputs = ({
         </div>
       </div>
     </div>
-    // </div>
-    // </div>
   );
 };
 export default DataInputs;

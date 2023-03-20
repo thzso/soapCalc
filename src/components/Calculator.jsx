@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DataInputs from "./DataInputs";
-import Tooltip from "./Tooltip";
 import styles from "./Calculator.module.css";
-import input from "./Input.module.css";
 import button from "./Button.module.css";
 import SingleDataRow from "./SingleDataRow";
 
@@ -36,9 +34,9 @@ const Calculator = () => {
         setOptions((prev) => {
           const array = data.data.map((obj) => {
             return {
-              //ki ne töröld mégegyszer, kell, h a chose an oil legyen a first option
               value: obj.oil,
               text: obj.oil,
+              disabled: false,
             };
           });
           return [...prev, ...array];
@@ -49,12 +47,11 @@ const Calculator = () => {
     };
     getData();
   }, []);
-
+console.log("totalWeight", totalWeight)
   const handleTotalWeight =(num, name)=>{
     setTotalWeight(num)
-    setNaOhQuantity("")
     setLiquidQuantity("")
-    setOptions(prev=>prev)
+
 
   }
   const handleLiquidWeight =(num, name)=>{
@@ -62,7 +59,6 @@ const Calculator = () => {
     setLiquidWeight(num)
   }
   const handleSuperFat =(num, name)=>{
-    setNaOhQuantity("")
     setSuperFat(num)
   }
 
@@ -104,7 +100,7 @@ const Calculator = () => {
         handler={handleTotalWeight}
         placeholder={"---"} 
         {...{setNaOhQuantity}}
-        // disabled={false} onfocus={{}} onblur={{}}
+  
       >
         {}
       </SingleDataRow>
@@ -126,9 +122,10 @@ const Calculator = () => {
               setSumpercent,
               setNaOhQuantity,
               setLiquidQuantity,
+              setOptions
             }}
           >
-            {/* {sumPercent >= 100 && <Tooltip {...{ sumPercent }} />} */}
+     
           </DataInputs>
         ))}
       </div>

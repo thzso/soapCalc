@@ -92,8 +92,7 @@ option {
 }
 
 option:disabled {
- color: var(--color-shadow);
-  /* color:white; */
+ color: darkseagreen
 }
 
 
@@ -112,7 +111,6 @@ option:disabled {
   display: block;
   height: 100%;
   width: 2em;
-  /* background: red; */
 }
 
 .selectArrow::before,
@@ -144,10 +142,9 @@ option:disabled {
 
 
 .inputContainer {
-
   position: relative;
   display: flex;
-  /* width: fit-content; */
+
 }
 
 .inputTag {
@@ -157,17 +154,3 @@ option:disabled {
   color: var(--color-text);
 }
 
-
-
-
-
-
-/* -webkit-appearance: inherit; */
-
-/* border: 1px solid var(--select-border);
-    border-radius: 0.25em;
-    padding: 0.25em 0.5em;
-    font-size: 1.25rem;
-    cursor: pointer;
-    line-height: 1.1;
-     font-family: var(--fonts) !important; */

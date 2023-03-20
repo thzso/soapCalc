@@ -1,17 +1,10 @@
-
-
-
-
-
-.delete{
-
+.delete {
   display: flex;
   position: absolute;
   right: -30px;
-
 }
 
-.inputsContainer{
+.inputsContainer {
   margin-top: 0.1rem;
   position: relative;
   display: flex;
@@ -22,35 +15,25 @@
   justify-content: center;
   border-bottom: none;
   padding: 0;
-  /* border: 0.1rem solid black; */
 }
-.numberInputs{
+.numberInputs {
   display: flex;
-   gap: 0.2em; 
-   align-items: center;
+  gap: 0.2em;
+  align-items: center;
 }
 
-
-@media screen and (max-width : 500px) {
-
-  .delete{
+@media screen and (max-width: 500px) {
+  .delete {
     display: flex;
     position: absolute;
     right: 0px;
     top: 0;
     margin: 0.5rem;
   }
-  .inputsContainer{
-
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
-
-    /* align-items: center; */
+  .inputsContainer {
     justify-content: flex-start;
- 
+
     border-bottom: 0.1rem solid var(--color-mint);
     padding: 0.5rem 0;
-    /* padding: 0.5rem; */
   }
-  
 }
