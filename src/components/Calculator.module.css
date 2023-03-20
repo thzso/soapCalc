@@ -1,0 +1,86 @@
+.calculatorContanier {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: fit-content;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+/* .weightOfOils{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+} */
+
+.resultRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  /* font-weight: bold; */
+}
+
+.result span {
+  text-align: center;
+  font-size: 1.25rem;
+  border-radius: 0.1em;
+  padding: 0.25em 0.5em;
+  background: var(--color-mint);
+  width: 10rem;
+}
+
+.submitBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.labeledInput {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 2;
+  flex-direction: row;
+}
+
+/* 
+.inputsWithPercent {
+  display: flex;
+  align-items: center;
+} */
+
+@media screen and (max-width: 500px) {
+  .calculatorContanier {
+    margin: 1rem;
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    flex: 1 0 0;
+    min-width: fit-content;
+  }
+
+  .labeledInput{
+    flex-direction: column;
+    flex: 0;
+  }
+
+  .resultRow {
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+}

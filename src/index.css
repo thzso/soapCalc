@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Amatic+SC:wght@400;700&family=Atma:wght@300;400;500;600&family=Bad+Script&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Autour+One&display=swap'); */
+
+:root {
+
+  /* --body-fonts: */
+  /* --body-fonts: 'Autour One', cursive; */
+
+  --fonts: 'Amatic SC', cursive;
+  --fonts2: 'Abel', sans-serif;
+  /* --title-fonts2:'Bad Script', cursive; */
+
+  
+  --color-mint: #e5f7f0;
+  --color-shadow: #a9c3b9;
+  --color-text: #507064;
+  --color-warning: rgb(141, 67, 67);
+  --color-warning-light: rgba(225, 182, 182, 0.718);
+
+
+
+  
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: var(--fonts2);
+  display: flex;
+  justify-content: center;
+}
+
+.material-symbols-outlined{
+  color:var(--color-shadow)
+}
+.material-symbols-outlined:hover{
+  color: var(--color-warning)!important;
+}

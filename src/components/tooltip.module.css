@@ -1,0 +1,26 @@
+
+.tooltip{
+  position: absolute;
+  right: -1em;
+  top: -0.5em;
+ 
+  font-size: 0.8em;
+  font-family: var(--body-fonts);
+  border: 1px solid var(--color-shadow);
+  border-radius: 0.1em;
+  padding: 0.1em 0.2em;
+  z-index: 1;
+  font-weight: bold;
+}
+.green{
+  background-color: #e5f7f0bf;
+  border: 1px solid var(--color-shadow);
+  color: var(--color-text);
+  /* border: 1px solid green;
+  color: green; */
+}
+.red{
+ background-color: var(--color-warning-light);
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+}

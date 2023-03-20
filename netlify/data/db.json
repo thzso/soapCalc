@@ -1,0 +1,42 @@
+[
+  {
+    "oil": "Olive",
+    "SAP": 0.136
+  },
+  {
+    "oil": "Sunflower oil",
+    "SAP": 0.136
+  },
+  {
+    "oil": "Coconut oil",
+    "SAP": 0.184
+  },
+  {
+    "oil": "Shea butter",
+    "SAP": 0.128
+  },
+  {
+    "oil": "Lard",
+    "SAP": 0.139
+  },
+  {
+    "oil": "Butter - cow",
+    "SAP": 0.136
+  },
+  {
+    "oil": "Beeswax",
+    "SAP": 0.0690
+  },
+  {
+    "oil": "Castor oil",
+    "SAP": 0.128
+  },
+  {
+    "oil": "Cocoa butter",
+    "SAP": 0.137
+  },
+  {
+    "oil": "Palm oil",
+    "SAP": 0.1405
+  }
+]

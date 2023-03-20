@@ -1,0 +1,35 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Abel&family=Amatic+SC:wght@400;700&display=swap'); */
+
+
+
+body{
+  font-size: 1.25rem;
+  /* display: flex;
+  place-items: center;
+  min-height: 100vh; */
+
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+
+}
+
+
+header{
+  font-family: var(--fonts);
+  font-size: 3rem;
+color: var(--color-text);
+  text-shadow: 1px 1px var(--color-shadow);
+ 
+  text-align: center;
+  font-weight: bolder;
+
+
+  width: 100vw;
+  background: var(--color-mint);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
