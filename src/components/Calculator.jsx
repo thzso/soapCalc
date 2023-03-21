@@ -28,8 +28,10 @@ const Calculator = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await axios.get("/netlify/functions/api");
+        const data = await axios.get("/.netlify/functions/api");
         setData(data.data);
+
+        console.log(data)
 
         setOptions((prev) => {
           const array = data.data.map((obj) => {
