@@ -140,7 +140,7 @@ const DataInputs = ({
           onChange={handleSelectChange}
         >
           {options.map((opt, i) => (
-            <option key={i} value={opt.value} disabled={opt.disabled}>
+            <option key={opt.value} value={opt.value} disabled={opt.disabled}>
               {opt.text}
             </option>
           ))}
