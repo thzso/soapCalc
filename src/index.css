@@ -29,8 +29,3 @@
 .material-symbols-outlined:hover {
   color: var(--color-warning) !important;
 }
-select{
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  /* appearance: none !important; */
-}

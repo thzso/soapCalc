@@ -1,3 +1,8 @@
+
+.inputContainer {
+  position: relative;
+  display: flex;
+}
 .input {
   text-align: center;
   font-family: var(--fonts);
@@ -20,6 +25,10 @@ textarea:focus {
   border: 1px solid var(--color-text);
 }
 
+.input:disabled {
+  background-color: var(--color-shadow);
+
+}
 input::placeholder {
   color: var(--color-shadow);
 }
@@ -28,19 +37,30 @@ input:disabled::placeholder {
   color: white;
 }
 
+.inputTag {
+  position: absolute;
+  right: 0.5em;
+  top: 10%;
+  color: var(--color-text);
+}
+
 .customSelect {
   position: relative;
 }
 
-.select {
+select {
+  
+  box-sizing: content-box;
+  height: 1.563rem;
   outline: none;
   color: var(--color-text);
   font-family: var(--fonts2);
   font-size: 1.25rem;
   border: 1px solid var(--color-shadow);
   border-radius: 0.1em;
+  padding: 0;
   padding: 0.25rem 2rem 0.25rem 0.5rem !important;
-  width: 10rem;
+  width: 7.5rem;
   text-align: justify;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
@@ -48,15 +68,48 @@ input:disabled::placeholder {
 
 }
 
-.input:disabled {
-  background-color: var(--color-shadow);
-
+.selectArrow {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  height: 100%;
+  width: 1.6em;
 }
+
+.selectArrow::before,
+.selectArrow::after {
+  --size: 0.3em;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selectArrow::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--color-text);
+  top: 40%;
+}
+
+.selectArrow::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid var(--color-text);
+  top: 60%;
+}
+
+
 
 .select:disabled {
   background-color: var(--color-shadow);
   opacity: 1;
   color: white;
+  appearance: none;
 }
 
 .selectPlaceholder {
@@ -71,51 +124,5 @@ option:disabled {
   color: darkseagreen;
 }
 
-.selectArrow {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  height: 100%;
-  width: 2em;
-}
 
-.selectArrow::before,
-.selectArrow::after {
-  --size: 0.3em;
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
 
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-}
-
-.selectArrow::before {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid var(--color-text);
-  top: 35%;
-}
-
-.selectArrow::after {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-top: var(--size) solid var(--color-text);
-  top: 65%;
-}
-
-.inputContainer {
-  position: relative;
-  display: flex;
-}
-
-.inputTag {
-  position: absolute;
-  right: 0.5em;
-  top: 10%;
-  color: var(--color-text);
-}

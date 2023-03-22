@@ -1,7 +1,6 @@
 .calculatorContanier {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: fit-content;
   gap: 0.5rem;
   margin: 0;
