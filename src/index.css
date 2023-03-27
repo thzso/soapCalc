@@ -24,7 +24,7 @@
 }
 
 .material-symbols-outlined {
-  color: var(--color-shadow);
+  color: var(--color-warning-light);
 }
 .material-symbols-outlined:hover {
   color: var(--color-warning) !important;

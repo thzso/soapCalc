@@ -30,7 +30,6 @@
     margin: 0.5rem;
   }
   .inputsContainer {
-    justify-content: flex-start;
 
     border-bottom: 0.1rem solid var(--color-mint);
     padding: 0.5rem 0;

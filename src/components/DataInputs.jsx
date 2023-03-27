@@ -74,24 +74,17 @@ const DataInputs = ({
   };
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
-    // const prevSelected = selected
     setSelected(value);
-    console.log("Selected", selected);
     updateInputsList(name, value);
-    setOptions(
-      () => {
-        const newArr = options
-          .map((obj) => (obj.text === value ? { ...obj, disabled: true } : obj))
-          .map((obj) =>
-            obj.text === selected ? { ...obj, disabled: false } : obj
-          );
-        return newArr;
-      }
-
-      // const newOptions =.map()
-    );
+    setOptions(() => {
+      const newArr = options
+        .map((obj) => (obj.text === value ? { ...obj, disabled: true } : obj))
+        .map((obj) =>
+          obj.text === selected ? { ...obj, disabled: false } : obj
+        );
+      return newArr;
+    });
   };
-  console.log(options);
   const handlePercentChange = (num, name) => {
     const weightUpdate =
       num === "" ? "" : (totalWeight * (num / 100)).toFixed(2);
@@ -125,7 +118,6 @@ const DataInputs = ({
       className={`${styles.inputsContainer} ${
         index === 0 && styles.rowWithoutX
       }`}
-
     >
       <div className={input.customSelect}>
         <select
@@ -140,7 +132,7 @@ const DataInputs = ({
           onChange={handleSelectChange}
         >
           {options.map((opt, i) => (
-            <option value={opt.value} disabled={opt.disabled}>
+            <option key={opt.text} value={opt.value} disabled={opt.disabled}>
               {opt.text}
             </option>
           ))}

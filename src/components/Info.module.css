@@ -1,0 +1,46 @@
+.info{
+  color:var(--color-mint);
+  font-family: var(--fonts2);
+  font-size: small;
+  padding: 0 2rem;
+
+}
+
+#information{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+#icon{
+  color: white !important;
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+}
+
+#sapInfo{
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top:0;
+  background-color: white;
+  color: #607D8B;
+  font-family: var(--fonts2);
+  border: 1px solid var(--color-shadow);
+}
+ul{
+  padding: 1rem;
+  list-style: none;
+  position: relative;
+
+ 
+}
+#closeSapInfo{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
+}
+li{
+  width: max-content;
+}

@@ -1,22 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+import {useState } from "react";
 import DataInputs from "./DataInputs";
 import styles from "./Calculator.module.css";
 import button from "./Button.module.css";
 import SingleDataRow from "./SingleDataRow";
 
-const Calculator = () => {
-  const [data, setData] = useState([]);
+const Calculator = ({data, options, setOptions}) => {
+  
   const [inputsList, setInputsList] = useState([
     { id: Math.random() * 100, oil: "", percent: "", weight: "" },
   ]);
-  const [options, setOptions] = useState([
-    {
-      text: "Choose an oil",
-      disabled: true,
-      value: "",
-    },
-  ]);
+console.log(options)
   const [totalWeight, setTotalWeight] = useState("");
   const [liquidWeight, setLiquidWeight] = useState("");
   const [superFat, setSuperFat] = useState("");
@@ -25,31 +19,8 @@ const Calculator = () => {
   const [liquidQuantity, setLiquidQuantity] = useState(undefined);
   const [sumPercent, setSumpercent] = useState(0);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await axios.get("/.netlify/functions/api");
-        setData(data.data);
 
-        console.log(data)
 
-        setOptions((prev) => {
-          const array = data.data.map((obj) => {
-            return {
-              value: obj.oil,
-              text: obj.oil,
-              disabled: false,
-            };
-          });
-          return [...prev, ...array];
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, []);
-console.log("totalWeight", totalWeight)
   const handleTotalWeight =(num, name)=>{
     setTotalWeight(num)
     setLiquidQuantity("")
@@ -92,6 +63,7 @@ console.log("totalWeight", totalWeight)
 
   return (
     <div className={styles.calculatorContanier}>
+      <div id={styles.totalWeight}>
       <SingleDataRow
         name="totalWeight"
         text="Total weight of oils: "
@@ -102,10 +74,11 @@ console.log("totalWeight", totalWeight)
         handler={handleTotalWeight}
         placeholder={"---"} 
         {...{setNaOhQuantity}}
-  
       >
-        {}
+
       </SingleDataRow>
+      </div>
+        {}
 
       <div className={styles.listContainer}>
         {inputsList.map((oilsData, index) => (
@@ -148,7 +121,7 @@ console.log("totalWeight", totalWeight)
         max={45}
         value={liquidWeight}
         handler={handleLiquidWeight}
-        placeholder={"---"} 
+        placeholder={"30-45%"} 
         {...{setNaOhQuantity}}
       >
         {liquidQuantity && <span>{liquidQuantity}</span>}
@@ -162,7 +135,7 @@ console.log("totalWeight", totalWeight)
         max={25}
         value={superFat}
         handler={handleSuperFat}
-        placeholder={"---"} 
+        placeholder={"max 25%"} 
         {...{setNaOhQuantity}}
       >
         {naOhQuantity && (

@@ -3,8 +3,9 @@
   flex-direction: column;
   width: fit-content;
   gap: 0.5rem;
-  margin: 0;
+  margin: 2rem;
 }
+
 
 .resultRow {
   display: flex;
@@ -30,7 +31,7 @@
   font-size: 1.25rem;
   border-radius: 0.1em;
   padding: 0.25em 0.5em;
-  background: var(--color-mint);
+  background: #e5f7f054;
   width: 10rem;
 }
 
@@ -49,6 +50,10 @@
 @media screen and (max-width: 500px) {
   .calculatorContanier {
     margin: 1rem;
+  }
+  #totalWeight{
+    display: flex;
+    justify-content: center;
   }
 
   .label {

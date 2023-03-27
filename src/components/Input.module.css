@@ -26,7 +26,9 @@ textarea:focus {
 }
 
 .input:disabled {
-  background-color: var(--color-shadow);
+  /* background-color: var(--color-shadow); */
+  background-color: transparent;
+  
 
 }
 input::placeholder {
@@ -34,8 +36,19 @@ input::placeholder {
 }
 
 input:disabled::placeholder {
-  color: white;
+  /* color: white; */
+  color: var(--color-shadow);
 }
+input:hover, select:hover{
+  background-color: var(--color-mint);
+}
+
+select:hover:not(:disabled){
+  cursor: pointer;
+}
+/* select:disabled:hover, input:disabled:hover{
+  background-color: var(--color-warning-light);
+} */
 
 .inputTag {
   position: absolute;
@@ -106,9 +119,11 @@ select {
 
 
 .select:disabled {
-  background-color: var(--color-shadow);
+  /* background-color: var(--color-shadow); */
+  background-color: transparent;
   opacity: 1;
-  color: white;
+  /* color: white; */
+  color: var(--color-shadow);
   appearance: none;
 }
 
@@ -124,5 +139,7 @@ option:disabled {
   color: darkseagreen;
 }
 
+@media screen and (max-width: 500px) {
 
+}
 

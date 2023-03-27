@@ -14,9 +14,9 @@
   width: fit-content;
   background: var(--color-mint);
   border: 1px solid var(--color-shadow);
-  box-shadow: 1px 1px 0px 0px var(--color-shadow),
-    2px 2px 0px 0px var(--color-shadow), 3px 3px 0px 0px var(--color-shadow),
-    4px 4px 0px 0px var(--color-shadow);
+  box-shadow: 1px 1px 0px 0px #82aa9a,
+    2px 2px 0px 0px #82aa9a, 3px 3px 0px 0px #82aa9a,
+    4px 4px 0px 0px #82aa9a;
   margin-top: 0.5rem;
   transition: all 0.3s;
   align-self: center;
