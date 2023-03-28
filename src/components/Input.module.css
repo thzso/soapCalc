@@ -46,15 +46,13 @@ input:hover, select:hover{
 select:hover:not(:disabled){
   cursor: pointer;
 }
-/* select:disabled:hover, input:disabled:hover{
-  background-color: var(--color-warning-light);
-} */
+
 
 .inputTag {
   position: absolute;
   right: 0.5em;
   top: 10%;
-  color: var(--color-text);
+  color: var(--color-shadow);
 }
 
 .customSelect {

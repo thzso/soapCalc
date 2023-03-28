@@ -1,16 +1,14 @@
-
-import {useState } from "react";
+import { useState } from "react";
 import DataInputs from "./DataInputs";
 import styles from "./Calculator.module.css";
 import button from "./Button.module.css";
 import SingleDataRow from "./SingleDataRow";
 
-const Calculator = ({data, options, setOptions}) => {
-  
+const Calculator = ({ data, options, setOptions }) => {
   const [inputsList, setInputsList] = useState([
     { id: Math.random() * 100, oil: "", percent: "", weight: "" },
   ]);
-console.log(options)
+  console.log(options);
   const [totalWeight, setTotalWeight] = useState("");
   const [liquidWeight, setLiquidWeight] = useState("");
   const [superFat, setSuperFat] = useState("");
@@ -19,26 +17,24 @@ console.log(options)
   const [liquidQuantity, setLiquidQuantity] = useState(undefined);
   const [sumPercent, setSumpercent] = useState(0);
 
-
-
-  const handleTotalWeight =(num, name)=>{
-    setTotalWeight(num)
-    setLiquidQuantity("")
-
-
-  }
-  const handleLiquidWeight =(num, name)=>{
-    setLiquidQuantity("")
-    setLiquidWeight(num)
-  }
-  const handleSuperFat =(num, name)=>{
-    setSuperFat(num)
-  }
+  const handleTotalWeight = (num, name) => {
+    setTotalWeight(num);
+    setLiquidQuantity("");
+  };
+  const handleLiquidWeight = (num, name) => {
+    setLiquidQuantity("");
+    setLiquidWeight(num);
+  };
+  const handleSuperFat = (num, name) => {
+    setSuperFat(num);
+  };
 
   const handleCalculate = () => {
-    const filledInputsList = inputsList.filter(obj=> !Object.values(obj).includes(""))
-    console.log(filledInputsList)
-        setInputsList(filledInputsList)
+    const filledInputsList = inputsList.filter(
+      (obj) => !Object.values(obj).includes("")
+    );
+
+    setInputsList(filledInputsList);
     const sumOfproducts = filledInputsList
       .map(
         (listItem) =>
@@ -51,7 +47,6 @@ console.log(options)
     const water =
       liquidWeight !== "" ? `${(liquidWeight / 100) * totalWeight} g` : "?";
     setLiquidQuantity(water);
-
   };
 
   const handlePlus = () => {
@@ -64,21 +59,19 @@ console.log(options)
   return (
     <div className={styles.calculatorContanier}>
       <div id={styles.totalWeight}>
-      <SingleDataRow
-        name="totalWeight"
-        text="Total weight of oils: "
-        inputTag="g"
-        min={0}
-        max={10000}
-        value={totalWeight}
-        handler={handleTotalWeight}
-        placeholder={"---"} 
-        {...{setNaOhQuantity}}
-      >
-
-      </SingleDataRow>
+        <SingleDataRow
+          name="totalWeight"
+          text="Total weight of oils: "
+          inputTag="g"
+          min={0}
+          max={10000}
+          value={totalWeight}
+          handler={handleTotalWeight}
+          placeholder={"---"}
+          {...{ setNaOhQuantity }}
+        ></SingleDataRow>
       </div>
-        {}
+      {}
 
       <div className={styles.listContainer}>
         {inputsList.map((oilsData, index) => (
@@ -97,11 +90,9 @@ console.log(options)
               setSumpercent,
               setNaOhQuantity,
               setLiquidQuantity,
-              setOptions
+              setOptions,
             }}
-          >
-     
-          </DataInputs>
+          ></DataInputs>
         ))}
       </div>
 
@@ -117,12 +108,12 @@ console.log(options)
         name="liqiudWeight"
         text="Liquid: "
         inputTag="%"
-        min={0}
+        min={1}
         max={45}
         value={liquidWeight}
         handler={handleLiquidWeight}
-        placeholder={"30-45%"} 
-        {...{setNaOhQuantity}}
+        placeholder={"30-45%"}
+        {...{ setNaOhQuantity }}
       >
         {liquidQuantity && <span>{liquidQuantity}</span>}
       </SingleDataRow>
@@ -131,12 +122,12 @@ console.log(options)
         name="superFat"
         text="SuperFat: "
         inputTag="%"
-        min={0}
+        min={1}
         max={25}
         value={superFat}
         handler={handleSuperFat}
-        placeholder={"max 25%"} 
-        {...{setNaOhQuantity}}
+        placeholder={"max 25%"}
+        {...{ setNaOhQuantity }}
       >
         {naOhQuantity && (
           <span> NaOh : {Number(naOhQuantity).toFixed(2)} g</span>
@@ -162,7 +153,7 @@ console.log(options)
 
         <button
           className={button.button}
-          disabled={sumPercent === 100 && totalWeight!==""? false : true}
+          disabled={sumPercent === 100 && totalWeight !== "" ? false : true}
           onClick={(e) => handleCalculate(e)}
         >
           Calculate

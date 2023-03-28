@@ -7,7 +7,7 @@
   --color-shadow: #a9c3b9;
   --color-text: #507064;
   --color-warning: rgb(141, 67, 67);
-  --color-warning-light: rgba(225, 182, 182, 0.718);
+  --color-warning-light: rgb(225 182 182);
 }
 * {
   padding: 0;
